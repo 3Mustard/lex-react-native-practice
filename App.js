@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, ScrollView, Text } from 'react-native';
+import { View, StyleSheet, ScrollView, Text, Image } from 'react-native';
 export default class App extends React.Component {
   render() {
     return (
@@ -13,6 +13,7 @@ export default class App extends React.Component {
         </ScrollView>
         <View style={styles.boxSmall}></View>
         <View style={styles.boxLarge}></View>
+        <Image style={styles.image} source={require('./assets/chae.jpg')}/>
       </ScrollView>
     )
   }
@@ -35,5 +36,8 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     marginRight: 5,
     backgroundColor: 'steelblue'
+  },
+  image: {
+    width: 400
   }
 })
