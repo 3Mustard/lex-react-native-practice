@@ -4,8 +4,9 @@ export default class App extends React.Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <View style={styles.boxLarge}></View>
-        <Text>안녕하세요</Text>
+        <View style={styles.boxLarge}>
+          <Text style={styles.text}>안녕하세요</Text>
+        </View>
         <ScrollView horizontal>
           <View style={styles.boxSmall}></View>
           <View style={styles.boxSmall}></View>
@@ -31,11 +32,17 @@ const styles = StyleSheet.create({
     backgroundColor: 'skyblue'
   },
   boxLarge: {
+    justifyContent: "center",
+    alignItems: "center",
     width: 300,
     height: 300,
     marginBottom: 5,
     marginRight: 5,
     backgroundColor: 'steelblue'
+  },
+  text: {
+    textAlign: 'center',
+    backgroundColor: 'yellow'
   },
   image: {
     width: 400
