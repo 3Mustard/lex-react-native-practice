@@ -1,50 +1,46 @@
-import React from 'react';
-import { View, StyleSheet, ScrollView, Text, Image } from 'react-native';
+
+import * as React from 'react';
+import { Text, View, StyleSheet, FlatList } from 'react-native';
+
 export default class App extends React.Component {
-  render() {
-    return (
-      <ScrollView style={styles.container}>
-        <View style={styles.boxLarge}>
-          <Text style={styles.text}>안녕하세요</Text>
-        </View>
-        <ScrollView horizontal>
-          <View style={styles.boxSmall}></View>
-          <View style={styles.boxSmall}></View>
-          <View style={styles.boxSmall}></View>
-        </ScrollView>
-        <View style={styles.boxSmall}></View>
-        <View style={styles.boxLarge}></View>
-        <Image style={styles.image} source={require('./assets/chae.jpg')}/>
-      </ScrollView>
-    )
-  }
+render() {
+  var data = [
+    { framework: 'React JS' },
+    { framework: 'Angular JS' },
+    { framework: 'Ember JS' },
+    { framework: 'Knockout JS' },
+    { framework: 'Polymer JS' },
+    { framework: 'Node JS' },
+    { framework: 'Express JS' },
+  ];
+  return (
+    <View style={styles.container}>
+      <FlatList
+        data={data}
+        keyExtractor={(item,index)=> index}
+        renderItem={({ item,index }) => (
+          <View style={styles.itemContainer} key={index.toString()}>
+            <Text>{item.framework}</Text>
+          </View>
+        )}
+      />
+    </View>
+  );
+}
 }
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 30
+    paddingTop: 30
   },
-  boxSmall: {
-    width: 200,
-    height: 200,
-    marginBottom: 5,
-    marginRight: 5,
-    backgroundColor: 'skyblue'
+  itemContainer: {
+    height:100,
+    backgroundColor:'skyblue',
+    alignItems:'center',
+    justifyContent:'center',
+    borderRadius:5,
+    borderColor:'black',
+    borderWidth:1,
+    margin:25
   },
-  boxLarge: {
-    justifyContent: "center",
-    alignItems: "center",
-    width: 300,
-    height: 300,
-    marginBottom: 5,
-    marginRight: 5,
-    backgroundColor: 'steelblue'
-  },
-  text: {
-    textAlign: 'center',
-    backgroundColor: 'yellow'
-  },
-  image: {
-    width: 400
-  }
-})
+});
